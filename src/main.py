@@ -5,7 +5,7 @@ from . import fetch
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="suite_downloader", 
+        prog="ssdownloader", 
         description="Data downloader from SparseSuite.")
     parser.add_argument("-f", "--list-file", help="matrix name list file destination.", required=True)
     parser.add_argument("-d", "--destination", help="destination path.", default=os.getcwd())
