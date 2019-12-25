@@ -2,7 +2,7 @@ Suite Downloader
 ===============
 
 This is a small program that helps you to download given list of matrices from the
-SuiteSparse matrix collection <sup>[1]</sup>.
+[SuiteSparse matrix collection](https://sparse.tamu.edu/) <sup>[1]</sup>.
 
 ### Installation 
 ``` sh
@@ -30,7 +30,7 @@ optional arguments:
 
 ### Todo
 - [ ] Check internet connection
-- [ ] Contorl if current version is the latest one
+- [ ] Control unit for checking if current version is the latest one
 - [ ] Upload to PyPI
 
 
