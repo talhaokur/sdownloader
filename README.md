@@ -14,7 +14,7 @@ python3 setup.py install
 
 ### Usage
 ``` sh
-usage: suite_downloader [-h] -f LIST_FILE [-d DESTINATION] [-v]
+usage: sdownloader [-h] -f LIST_FILE [-d DESTINATION] [-v]
 
 Data downloader from SparseSuite.
 
@@ -29,9 +29,9 @@ optional arguments:
 ```
 
 ### Todo
-[] Check internet connection
-[] Contorl if current version is the latest one
-[] Upload to PyPI
+- [ ] Check internet connection
+- [ ] Contorl if current version is the latest one
+- [ ] Upload to PyPI
 
 
 ### References
