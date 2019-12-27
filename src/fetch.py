@@ -11,8 +11,17 @@ SOURCE_URL = "https://sparse.tamu.edu/"
 
 def read_matrix_list_file(file_path):
     """
+    Reads matrix names from the given file.
 
+    Parameters:
+    -----------
+    file_path (string): source file's path
+
+    Returns:
+    --------
+    matrices (array[][]<string>): matrix groups and names
     """
+
     if not os.path.exists(file_path):
         logging.critical("List file couldn't found exiting...")
         raise SystemExit()
@@ -27,6 +36,17 @@ def read_matrix_list_file(file_path):
 
 
 def download_data_files(matrix_list, destination=None, keep_archive_files=False):
+    """
+    Downloads the given list of matrices from SparseSuit Collection.
+
+    Parameters:
+    -----------
+    matrix_list (array[][]<string>): matrix groups and names
+    destination (string, optional): root dir path of data files, default=None
+    keep_archive_files (bool, optinal): to save or remove downloaded archive files
+                                        default=False
+    """
+
     if not utils.check_internet_connection():
         logging.critical("Can not connect to the Internet")
         raise SystemExit("Can not connect to the Internet, please check your connection. Exiting...")
@@ -39,7 +59,7 @@ def download_data_files(matrix_list, destination=None, keep_archive_files=False)
     file_list = []
 
     for item in matrix_list:
-        matrix_name = item[0] + '_' + item[1] 
+        matrix_name = item[0] + '_' + item[1]
         matrix_url = SOURCE_URL + 'MM' + '/' + item[0] + '/' + item[1] + '.tar.gz'
         matrix_archive = requests.get(matrix_url)
 
@@ -61,6 +81,15 @@ def download_data_files(matrix_list, destination=None, keep_archive_files=False)
 
 
 def extract_archive_files(file_list, destination=None):
+    """
+    Extract downloaded archive files.
+
+    Parameters:
+    -----------
+    file_list (string): list of archive files
+    destination (string, optional): a path for extracting the archives into, default=None
+    """
+
     for f in file_list:
         with tarfile.open(f, "r:gz") as tar:
             tar.extractall(path=destination)
