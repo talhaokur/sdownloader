@@ -1,4 +1,4 @@
-import socket, logging
+import logging
 
 
 def check_internet_connection(host="8.8.8.8", port=53, timeout=1):
@@ -16,9 +16,11 @@ def check_internet_connection(host="8.8.8.8", port=53, timeout=1):
 
     Returns:
     --------
-    boolean
-
+    bool
     """
+
+    import socket
+
     logging.debug("Checking internet connection")
     try:
         socket.setdefaulttimeout(timeout)
@@ -28,3 +30,32 @@ def check_internet_connection(host="8.8.8.8", port=53, timeout=1):
         print(err)
 
     return False
+
+
+def check_version():
+    """
+    Checks whether there is an update for this package.
+
+    Returns:
+    --------
+    bool    
+    """
+
+    import src
+    import requests
+
+    current_version = src.__version__
+    
+    latest_version = requests.get("https://pypi.org/pypi/sdownloader/json")
+    latest_version = latest_version.json()
+    latest_version = latest_version["info"]["version"]
+
+    if current_version == latest_version:
+        logging.info("The package is up to date.")
+    elif current_version < latest_version:
+        logging.info("There is a newer version of this package.")
+        message = """There is a newer version of this package.
+        You can update by simply typing `pip3 install --upgrade sdownloader`."""
+        print(message)
+    else:
+        logging.debug("DEV version is in use.")
