@@ -3,7 +3,6 @@ import os
 import logging
 import tarfile
 import shutil
-from . import utils
 
 
 SOURCE_URL = "https://sparse.tamu.edu/"
@@ -46,11 +45,7 @@ def download_data_files(matrix_list, destination=None, keep_archive_files=False)
     keep_archive_files (bool, optinal): to save or remove downloaded archive files
                                         default=False
     """
-
-    if not utils.check_internet_connection():
-        logging.critical("Can not connect to the Internet")
-        raise SystemExit("Can not connect to the Internet, please check your connection. Exiting...")
-
+    
     if not destination:
         destination = './'
         logging.info("`destination` paramater isn't provided. Downloading to `./`")
