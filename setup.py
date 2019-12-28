@@ -1,8 +1,15 @@
 from setuptools import setup, find_packages
+from src import __version__ as package_version
+
+
+with open("README.md", "r") as f:
+    read_me = f.read()
 
 setup(name="sdownloader",
-      version="0.1.0",
+      version=package_version,
       description="A little program to download given list of matrices from SuiteSparse.",
+      long_description = read_me,
+      long_description_content_type='text/markdown',
       url="https://github.com/talhaokur/sdownloader",
       author="Talha Okur",
       author_email="talhao@acm.org",
@@ -24,4 +31,8 @@ setup(name="sdownloader",
           'console_scripts': [
               'sdownloader=src.main:main',],
               },
+      project_urls={
+          'Source': 'https://github.com/talhaokur/sdownloader',
+          'Tracker': 'https://github.com/talhaokur/sdownloader/issues',
+      }
       )
