@@ -4,12 +4,18 @@ Suite Downloader
 This is a small program that helps you to download given list of matrices from the
 [SuiteSparse matrix collection](https://sparse.tamu.edu/) <sup>[1]</sup>.
 
-### Installation 
+### Installation
+##### Install from source
 ``` sh
 git clone https://github.com/talhaokur/sdownloader.git
 cd sdownloader
 python3 setup.py install
 
+```
+
+##### Install from PyPI
+``` sh
+pip3 install sdownloader
 ```
 
 ### Usage
@@ -29,9 +35,10 @@ optional arguments:
 ```
 
 ### Todo
-- [ ] Check internet connection
-- [ ] Control unit for checking if current version is the latest one
-- [ ] Upload to PyPI
+- [X] Check internet connection
+- [X] Control unit for checking if current version is the latest one
+- [X] Upload to PyPI
+- [ ] Single data download mode
 
 
 ### References
