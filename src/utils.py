@@ -34,11 +34,7 @@ def check_internet_connection(host="8.8.8.8", port=53, timeout=1):
 
 def check_version():
     """
-    Checks whether there is an update for this package.
-
-    Returns:
-    --------
-    bool    
+    Checks whether there is an update for this package.   
     """
 
     import src
@@ -55,7 +51,7 @@ def check_version():
     elif current_version < latest_version:
         logging.info("There is a newer version of this package.")
         message = """There is a newer version of this package.
-        You can update by simply typing `pip3 install --upgrade sdownloader`."""
+You can update by simply typing `pip3 install --upgrade sdownloader`."""
         print(message)
     else:
         logging.debug("DEV version is in use.")

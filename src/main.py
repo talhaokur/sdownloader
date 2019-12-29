@@ -7,6 +7,14 @@ def main():
     parser = argparse.ArgumentParser(
         prog="sdownloader", 
         description="Data downloader from SparseSuite.")
+    
+    source_args_group = parser.add_mutually_exclusive_group(required=True)
+    source_args_group.add_argument("-f", "--list-file", help="matrix name list file destination.")
+    source_args_group.add_argument("-m", help="matrix names. Example: `sdownloader -m \"HB/1138_bus;FIDAP/ex37\"`")
+
+    parser.add_argument("-d", "--destination",
+                        help="destination path. Optional, default=current working directory.",
+                        default=os.getcwd())
     parser.add_argument("-V", "--verbose", help="toggle verbose mode.", action="store_true")
     parser.add_argument('-v', '--version', action='version', version="%(prog)s ("+__version__+")")
 
@@ -21,7 +29,12 @@ def main():
         raise SystemExit("Can not connect to the Internet, please check your connection. Exiting...")
 
     utils.check_version()
-    matrices = fetch.read_matrix_list_file(args.list_file)
+    
+    if args.list_file:
+        matrices = fetch.read_matrix_names(args.list_file, "file")
+    else:
+        matrices = fetch.read_matrix_names(args.m, "list")
+
     fetch.download_data_files(matrices, destination=args.destination, keep_archive_files=False)
 
 if __name__ == "__main__":
