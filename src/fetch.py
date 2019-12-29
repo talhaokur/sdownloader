@@ -95,7 +95,9 @@ def download_data_files(matrix_list, destination=None, keep_archive_files=False)
         logging.info("`destination` paramater isn't provided. Downloading to `./`")
 
     os.makedirs('./archive', exist_ok=True)
+
     file_list = []
+    err = 0
 
     for item in matrix_list:
         matrix_name = item[0] + '_' + item[1]
@@ -107,11 +109,18 @@ def download_data_files(matrix_list, destination=None, keep_archive_files=False)
             with open(tmp, 'wb') as f:
                 f.write(matrix_archive.content)
             file_list.append(tmp)
+            print(matrix_name, "downloaded.")
             logging.debug(matrix_name + " downloaded.")
         else:
+            err += 1
+            print(matrix_name, "couldn't download!")
             logging.warning(matrix_name + " couldn't download!")
 
-    logging.info("Archive files downloaded successfully.")
+    if not err:
+        logging.info("Archive files downloaded successfully.")
+    else:
+        logging.info(err + " error(s) occured during download.")
+
     extract_archive_files(file_list, destination)
 
     if not keep_archive_files:
