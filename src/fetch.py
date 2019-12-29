@@ -8,29 +8,73 @@ import shutil
 SOURCE_URL = "https://sparse.tamu.edu/"
 
 
-def read_matrix_list_file(file_path):
+def format_matrix_names(matrix_list=None):
     """
-    Reads matrix names from the given file.
+    Formats matrix names.
 
     Parameters:
     -----------
-    file_path (string): source file's path
+    matrix_list (list): matrix names to parse.
 
     Returns:
     --------
-    matrices (array[][]<string>): matrix groups and names
+    matrices (list): formatted data.
     """
 
-    if not os.path.exists(file_path):
-        logging.critical("List file couldn't found exiting...")
-        raise SystemExit()
+    if not matrix_list:
+        logging.critical("`matrix_list` in fetch.format_matrix_names is None!")
+        raise SystemExit("`matrix_list` in fetch.format_matrix_names can not be None.")
 
-    matrices = []
+    matrices = [tuple(matrix.split('/')) for matrix in matrix_list]
+    return matrices
 
-    with open(file_path) as list_file:
-        content = list_file.read().splitlines()
 
-    matrices = [tuple(line.split('/')) for line in content]
+def read_matrix_names(data=None, data_type=None):
+    """
+    Reads matrix names from given source and parses them to
+    a suitable format.
+
+    Parameters:
+    -----------
+    data (string): source data.
+    data_type (string): type of `data`. Values: `file` or `list.
+
+    Returns:
+    --------
+    matrices (list): contains tuples that hold group and matrix names.
+    """
+
+    def read_from_file(path):
+        if not os.path.exists(data):
+            logging.critical("List file couldn't found exiting...")
+            raise SystemExit()
+        
+        with open(data) as list_file:
+            matrices = list_file.read().splitlines()
+        return matrices
+
+    def read_from_list(m_list):
+        if str.endswith(m_list, ";"):
+            m_list = m_list[:-1]
+
+        matrices = m_list.split(";")
+        return matrices
+
+    if not data_type:
+        logging.warning("`data_type` in `read_matrix_names` is None!")
+    if not data:
+        logging.critical("`data` in `read_matrix_names` is None!")
+        raise SystemExit("`data` in `read_matrix_names` can not be None.")
+
+    if data_type == "file":
+        logging.debug("Reading matrix names from " + data)
+        data = read_from_file(data)
+        
+    elif data_type == "list":
+        logging.debug("Reading matrix names from given list")
+        data = read_from_list(data)
+
+    matrices = format_matrix_names(data)
     return matrices
 
 

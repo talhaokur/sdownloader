@@ -1,15 +1,14 @@
 import argparse
 import logging
 import os
-from . import fetch, utils
+from . import fetch, utils, __version__
 
 def main():
     parser = argparse.ArgumentParser(
         prog="sdownloader", 
         description="Data downloader from SparseSuite.")
-    parser.add_argument("-f", "--list-file", help="matrix name list file destination.", required=True)
-    parser.add_argument("-d", "--destination", help="destination path.", default=os.getcwd())
-    parser.add_argument("-v", "--verbose", help="toggle verbose mode. Enters the DEBUG mode", action="store_true")
+    parser.add_argument("-V", "--verbose", help="toggle verbose mode.", action="store_true")
+    parser.add_argument('-v', '--version', action='version', version="%(prog)s ("+__version__+")")
 
     args = parser.parse_args()
 

@@ -20,7 +20,7 @@ pip3 install sdownloader
 
 ### Usage
 ``` sh
-usage: sdownloader [-h] -f LIST_FILE [-d DESTINATION] [-v]
+usage: sdownloader [-h] (-f LIST_FILE | -m M) [-d DESTINATION] [-V] [-v]
 
 Data downloader from SparseSuite.
 
@@ -28,18 +28,22 @@ optional arguments:
   -h, --help            show this help message and exit
   -f LIST_FILE, --list-file LIST_FILE
                         matrix name list file destination.
+  -m M                  matrix names. Example: `sdownloader -m
+                        "HB/1138_bus;FIDAP/ex37"`
   -d DESTINATION, --destination DESTINATION
-                        destination path.
-  -v, --verbose         toggle verbose mode. Enters the DEBUG mode
-
+                        destination path. Optional, default=current working
+                        directory.
+  -V, --verbose         toggle verbose mode.
+  -v, --version         show program's version number and exit
 ```
 
-### Todo
-- [X] Check internet connection
-- [X] Control unit for checking if current version is the latest one
-- [X] Upload to PyPI
-- [ ] Single data download mode
+To download more than one matrix with `-m` argument, split names with semicolon.
 
+**Examples:**
+``` sh
+sdownloader -m "HB/1138_bus;FIDAP/ex37" -d data
+sdownloader -f data.txt -d data
+```
 
 ### References
 [1]: Timothy  A.  Davis  and  Yifan  Hu.  “The  University  of Florida  Sparse  Matrix  Collection”.  In: ACM  Trans. Math. Softw. 38.1 (Dec. 2011), 1:1–1:25. ISSN : 0098-3500. DOI : 10.1145/2049662.2049663. URL : http://doi.acm.org/10.1145/2049662.2049663 . 
