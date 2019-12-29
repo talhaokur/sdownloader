@@ -47,9 +47,9 @@ def check_version():
     latest_version = latest_version["info"]["version"]
 
     if current_version == latest_version:
-        logging.info("The package is up to date.")
+        logging.debug("The package is up to date.")
     elif current_version < latest_version:
-        logging.info("There is a newer version of this package.")
+        logging.debug("There is a newer version of this package.")
         message = """There is a newer version of this package.
 You can update by simply typing `pip3 install --upgrade sdownloader`."""
         print(message)

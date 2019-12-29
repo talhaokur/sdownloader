@@ -20,9 +20,10 @@ def main():
 
     args = parser.parse_args()
 
-    log_level = logging.DEBUG if args.verbose else logging.INFO
-
-    logging.basicConfig(level = log_level, format="[%(asctime)s]:%(levelname)s:%(message)s", datefmt='%H:%M:%S')
+    if args.verbose:
+        logging.basicConfig(level = logging.INFO,
+                            format="[%(asctime)s]:%(levelname)s:%(message)s",
+                            datefmt='%H:%M:%S')
 
     if not utils.check_internet_connection():
         logging.critical("Can not connect to the Internet")
