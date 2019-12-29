@@ -9,6 +9,7 @@ This is a small program that helps you to download given list of matrices from t
 ``` sh
 git clone https://github.com/talhaokur/sdownloader.git
 cd sdownloader
+pip3 install -r requirements.txt
 python3 setup.py install
 
 ```
