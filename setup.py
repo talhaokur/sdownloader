@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from src import __version__ as package_version
+from sdownloader import __version__ as package_version
 
 
 with open("README.md", "r") as f:
@@ -29,10 +29,9 @@ setup(name="sdownloader",
       ],
       entry_points={
           'console_scripts': [
-              'sdownloader=src.main:main',],
+              'sdownloader=sdownloader.main:main',],
               },
       project_urls={
           'Source': 'https://github.com/talhaokur/sdownloader',
           'Tracker': 'https://github.com/talhaokur/sdownloader/issues',
-      }
-      )
+      })

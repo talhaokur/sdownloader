@@ -143,4 +143,4 @@ def extract_archive_files(file_list, destination=None):
             tar.extractall(path=destination)
             logging.debug("`" + f + '` extracted to ' + destination)
 
-    logging.info("Archive files are extracted to: " + destination)
+    logging.info("Archive files extracted to: " + destination)

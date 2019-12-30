@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rewrite the method for reading matrix names. Renamed as "read_matrix_names".
 - Changed verbose mode. Now logger output is only visible if verbose mode
 is activated.
+- Changed project structure. (src -> sdownloader)
 
 ### Fixed
 - Fixed successful logging even there were errors.
