@@ -1,5 +1,6 @@
 Suite Downloader
 ===============
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f8fc90318a5f47a5bacf8fa372a95d1b)](https://www.codacy.com/manual/talhaokur/sdownloader?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=talhaokur/sdownloader&amp;utm_campaign=Badge_Grade)
 
 This is a small program that helps you to download given list of matrices from the
 [SuiteSparse matrix collection](https://sparse.tamu.edu/) <sup>[1]</sup>.
