@@ -15,8 +15,8 @@ def main():
     parser.add_argument("-d", "--destination",
                         help="destination path. Optional, default=current working directory.",
                         default=os.getcwd())
-    parser.add_argument("-V", "--verbose", help="toggle verbose mode.", action="store_true")
-    parser.add_argument('-v', '--version', action='version', version="%(prog)s ("+__version__+")")
+    parser.add_argument("-v", "--verbose", help="toggle verbose mode.", action="store_true")
+    parser.add_argument('-V', '--version', action='version', version="%(prog)s ("+__version__+")")
 
     args = parser.parse_args()
 
@@ -29,7 +29,7 @@ def main():
         logging.critical("Can not connect to the Internet")
         raise SystemExit("Can not connect to the Internet, please check your connection. Exiting...")
 
-    utils.check_version()
+    #utils.check_version()
     
     if args.list_file:
         matrices = fetch.read_matrix_names(args.list_file, "file")

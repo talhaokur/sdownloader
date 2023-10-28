@@ -37,10 +37,10 @@ def check_version():
     Checks whether there is an update for this package.   
     """
 
-    import src
+    import sdownloader
     import requests
 
-    current_version = src.__version__
+    current_version = sdownloader.__version__
     
     latest_version = requests.get("https://pypi.org/pypi/sdownloader/json")
     latest_version = latest_version.json()
