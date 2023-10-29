@@ -21,11 +21,11 @@ setup(name="sdownloader",
       python_requires=">=3",
       classifiers=[
           "Programming Language :: Python :: 3",
-          "Development Status :: 2 - Pre-Alpha",
+          "Development Status :: 4 - Beta",
           "Environment :: Console",
           "License :: OSI Approved :: MIT License",
-          "Operating System :: OS Independent",
-          "Intended Audience :: End Users/Desktop",
+          "Operating System :: POSIX :: Linux",
+          "Intended Audience :: Science/Research"
       ],
       entry_points={
           'console_scripts': [
